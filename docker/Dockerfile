@@ -22,6 +22,7 @@ RUN apt-get -y install \
 
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ADD ./config/skillpointe.com /etc/nginx/sites-available/skillpointe.com
+COPY ./config/mysql.cnf /etc/mysql/conf.d/
 COPY scripts /root/scripts
 RUN ln -s /etc/nginx/sites-available/skillpointe.com /etc/nginx/sites-enabled/
 RUN unlink /etc/nginx/sites-enabled/default
